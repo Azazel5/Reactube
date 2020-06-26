@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SidebarItem /> renders <SidebarItem /> with highlighted props 1`] = `
+<MenuItem
+  className="sidebar-item "
+>
+  <div
+    className="sidebar-item-alignment-container"
+  >
+    <span>
+      <Icon
+        as="i"
+        name="fire"
+        size="large"
+      />
+    </span>
+    <span>
+      Trending
+    </span>
+  </div>
+</MenuItem>
+`;
+
+exports[`<SidebarItem /> renders <SidebarItem /> with non-highlighted props 1`] = `
+<MenuItem
+  className="sidebar-item "
+>
+  <div
+    className="sidebar-item-alignment-container"
+  >
+    <span>
+      <Icon
+        as="i"
+        name="fire"
+        size="large"
+      />
+    </span>
+    <span>
+      Trending
+    </span>
+  </div>
+</MenuItem>
+`;
+
+exports[`<SidebarItem /> renders empty <SidebarItem /> item 1`] = `
+<MenuItem
+  className="sidebar-item "
+>
+  <div
+    className="sidebar-item-alignment-container"
+  >
+    <span>
+      <Icon
+        as="i"
+        size="large"
+      />
+    </span>
+    <span />
+  </div>
+</MenuItem>
+`;

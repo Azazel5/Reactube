@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<VideoGridHeader /> renders <VideoGridHeader /> with empty title 1`] = `
+<videoGridHeader
+  title=""
+/>
+`;
+
+exports[`<VideoGridHeader /> renders <VideoGridHeader /> with title 1`] = `
+<videoGridHeader
+  title="A title"
+/>
+`;
+
+exports[`<VideoGridHeader /> renders <VideoGridHeader /> without props 1`] = `<videoGridHeader />`;
