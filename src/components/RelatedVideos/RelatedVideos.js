@@ -1,0 +1,17 @@
+import React from 'react'
+import './RelatedVideos.scss'
+import VideoPreview from '../VideoPreview/VideoPreview'
+import NextUpVideo from './NextUpVideo/NextUpVideo'
+
+const relatedVideos = (props) => {
+    return (
+        <div className="related-videos">
+            <NextUpVideo />
+            <VideoPreview horizontal />
+            <VideoPreview horizontal />
+            <VideoPreview horizontal />
+        </div>
+    )
+}
+
+export default relatedVideos

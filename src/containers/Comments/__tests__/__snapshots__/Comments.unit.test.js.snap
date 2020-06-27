@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Comments /> renders <Comments /> 1`] = `
+<div>
+  <commentsHeader />
+  <addComment />
+  <comment />
+  <comment />
+  <comment />
+</div>
+`;
+
+exports[`<Comments /> renders <Comments /> with a amountComments prop 1`] = `
+<div>
+  <commentsHeader
+    amountComments={123}
+  />
+  <addComment />
+  <comment />
+  <comment />
+  <comment />
+</div>
+`;
