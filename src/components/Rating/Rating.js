@@ -6,7 +6,6 @@ const rating = (props) => {
     let progress = null;
     if (props.likeCount && props.dislikeCount) {
         const percent = (props.likeCount / (props.likeCount + props.dislikeCount)) * 100
-        console.log(percent)
         progress = <Progress className="progress" percent={percent} size="tiny" />
     }
     return (

@@ -21,7 +21,7 @@ exports[`<NextUpVideo /> renders <NextUpVideo /> 1`] = `
       />
     </div>
   </div>
-  <videoPreview
+  <VideoPreview
     horizontal={true}
   />
   <Divider />

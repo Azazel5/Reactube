@@ -18,7 +18,6 @@ const video = (props) => {
 
     // Add ?&autoplay=1 to autoplay when everything's built
     const embedURL = `${BASE_EMBED_URL}${props.id}`
-    console.log(embedURL)
     return (
         <div className="video-container">
             <div className="video">

@@ -1,20 +1,44 @@
 import React, { Component } from 'react'
 import './Home.scss'
-import VideoGrid from '../../components/VideoGrid/VideoGrid'
 import Sidebar from '../Sidebar/Sidebar'
+import HomeContent from './HomeContent/HomeContent'
+import { connect } from 'react-redux'
+import * as videoActions from '../../store/actions/video'
+import { bindActionCreators } from 'redux'
+import { getYoutubeLibrary } from '../../store/reducers/api'
 
 class Home extends Component {
+    componentDidMount() {
+        if (this.props.youtubeLibraryLoaded) {
+            this.props.fetchMostPopularVideos();
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props.youtubeLibraryLoaded !== prevProps.youtubeLibraryLoaded) {
+            this.props.fetchMostPopularVideos();
+        }
+    }
+
     render() {
         return (
-            <div className="home">
+            <React.Fragment>
                 <Sidebar />
-                <div className="responsive-video-grid-container">
-                    <VideoGrid title="Trending"/>
-                    <VideoGrid title='Autos & Vehicles' hideDivider/>
-                </div>
-            </div>
+                <HomeContent />
+            </React.Fragment>
         )
     }
 }
 
-export default Home 
+function mapStateToProps(state) {
+    return {
+        youtubeLibraryLoaded: getYoutubeLibrary(state),
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    const fetchMostPopularVideos = videoActions.mostPopular.request;
+    return bindActionCreators({ fetchMostPopularVideos }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
