@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import './VideoInfoBox.scss'
 import { Image, Button, Divider } from 'semantic-ui-react'
+import Linkify from 'react-linkify'
+import { getPublishedAtDateString } from '../../services/date/date-format'
 
 class VideoInfoBox extends Component {
     constructor(props) {
@@ -18,7 +20,18 @@ class VideoInfoBox extends Component {
         })
     }
 
-    render() {
+    getDescriptionParagraph() {
+        const videoDescription = this.props.video.snippet ? this.props.video.snippet.description : null
+        if (!videoDescription) {
+            return null
+        }
+
+        return videoDescription.split('\n').map((paragraph, index) => {
+            return <p key={index}><Linkify>{paragraph}</Linkify></p>
+        })
+    }
+
+    getConfig() {
         let descriptionTextClass = 'collapsed'
         let buttonTitle = 'Show More'
         if (!this.state.collapsed) {
@@ -26,22 +39,33 @@ class VideoInfoBox extends Component {
             buttonTitle = 'Show Less'
         }
 
+        return {
+            descriptionTextClass,
+            buttonTitle
+        }
+    }
+
+    render() {
+        if (!this.props.video) {
+            return <div />
+        }
+
+        const descriptionParagraph = this.getDescriptionParagraph()
+        const { descriptionTextClass, buttonTitle } = this.getConfig()
+        const publishedAtString = getPublishedAtDateString(this.props.video.snippet.publishedAt)
+
         return (
             <div>
                 <div className="video-info-box">
                     <Image className="channel-image" src='http://via.placeholder.com/48x48' circular />
                     <div className="video-info">
                         <div className="channel-name">Channel Name</div>
-                        <div className="video-publication-date">Thu 24, 2017</div>
+                        <div className="video-publication-date">{publishedAtString}</div>
                     </div>
                     <Button color="youtube">91.5k Subscribe</Button>
                     <div className="video-description">
                         <div className={descriptionTextClass}>
-                            <p>Paragraph 1</p>
-                            <p>Paragraph 2</p>
-                            <p>Paragraph 3</p>
-                            <p>Paragraph 4</p>
-                            <p>Paragraph 5</p>
+                            {descriptionParagraph}
                         </div>
                         <Button compact onClick={this.toggleButtonClickHandler}>{buttonTitle}</Button>
                     </div>
